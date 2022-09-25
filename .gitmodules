@@ -1,0 +1,6 @@
+[submodule "toolchain/llvm-arm-toolchain-ship/8.0"]
+	path = toolchain/llvm-arm-toolchain-ship/8.0
+	url = https://github.com/kimocoder/qcom-clang
+[submodule "toolchain/aarch64-linux-android-4.9"]
+	path = toolchain/aarch64-linux-android-4.9
+	url = https://github.com/GrowtopiaJaw/aarch64-linux-android-4.9.git

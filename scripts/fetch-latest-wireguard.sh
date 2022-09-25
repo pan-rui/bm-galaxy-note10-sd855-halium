@@ -14,6 +14,8 @@ while read -r distro package version _; do
 	fi
 done < <(curl -A "$USER_AGENT" -LSs https://build.wireguard.com/distros.txt)
 
+VERSION=0.0.20191219
+
 [[ -n $VERSION ]]
 
 if [[ -f net/wireguard/version.h && $(< net/wireguard/version.h) == *$VERSION* ]]; then
