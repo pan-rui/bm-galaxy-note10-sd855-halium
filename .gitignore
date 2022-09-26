@@ -7,3 +7,7 @@
 /net/wireguard/*
 /buildclean2.sh
 /buildnope1.sh
+/out
+/mkboot.img
+*.o
+__pycache__
