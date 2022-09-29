@@ -17,6 +17,9 @@
 #include <linux/mdss_io_util.h>
 
 #define MAX_I2C_CMDS  16
+
+#if !IS_ENABLED(CONFIG_DRM_MSM)
+
 void dss_reg_w(struct dss_io_data *io, u32 offset, u32 value, u32 debug)
 {
 	u32 in_val;
@@ -77,6 +80,8 @@ void dss_reg_dump(void __iomem *base, u32 length, const char *prefix,
 			(void *)base, length, false);
 } /* dss_reg_dump */
 EXPORT_SYMBOL(dss_reg_dump);
+#endif
+
 
 static struct resource *msm_mdss_get_res_byname(struct platform_device *pdev,
 	unsigned int type, const char *name)
@@ -90,6 +95,8 @@ static struct resource *msm_mdss_get_res_byname(struct platform_device *pdev,
 	return res;
 } /* msm_mdss_get_res_byname */
 EXPORT_SYMBOL(msm_mdss_get_res_byname);
+
+#if !IS_ENABLED(CONFIG_DRM_MSM)
 
 int msm_dss_ioremap_byname(struct platform_device *pdev,
 	struct dss_io_data *io_data, const char *name)
@@ -212,6 +219,7 @@ vreg_get_fail:
 	return rc;
 } /* msm_dss_config_vreg */
 EXPORT_SYMBOL(msm_dss_config_vreg);
+#endif
 
 int msm_dss_config_vreg_opt_mode(struct dss_vreg *in_vreg, int num_vreg,
 				 enum dss_vreg_mode mode)
@@ -258,6 +266,8 @@ error:
 	return rc;
 }
 EXPORT_SYMBOL(msm_dss_config_vreg_opt_mode);
+
+#if !IS_ENABLED(CONFIG_DRM_MSM)
 
 int msm_dss_enable_vreg(struct dss_vreg *in_vreg, int num_vreg, int enable)
 {
@@ -493,6 +503,7 @@ int msm_dss_enable_clk(struct dss_clk *clk_arry, int num_clk, int enable)
 } /* msm_dss_enable_clk */
 EXPORT_SYMBOL(msm_dss_enable_clk);
 
+#endif /*!ENABLED(CONFIG_DRM_MSM)*/
 
 int dss_i2c_byte_read(struct i2c_client *client, uint8_t slave_addr,
 			uint8_t reg_offset, uint8_t *read_buf)

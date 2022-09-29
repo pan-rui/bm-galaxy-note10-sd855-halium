@@ -20,6 +20,9 @@
 #include "mdss_debug.h"
 #include "mdss_rgb.h"
 
+#if IS_ENABLED(CONFIG_DRM_MSM)
+extern int dsi_core_clk_start(struct dsi_core_clks *c_clks);
+#else
 int dsi_core_clk_start(struct dsi_core_clks *c_clks)
 {
 	int rc = 0;
@@ -76,6 +79,7 @@ error:
 	pr_debug("%s: EXIT, rc = %d\n", mngr->name, rc);
 	return rc;
 }
+#endif
 
 static int dsi_core_clk_stop(struct dsi_core_clks *c_clks)
 {
