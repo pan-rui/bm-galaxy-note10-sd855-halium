@@ -1,0 +1,13 @@
+ARCH=arm64
+BRANCH=master
+CLANG_TRIPLE=aarch64-linux-gnu-
+CROSS_COMPILE=toolchain/aarch64-linux-android-4.9/bin/aarch64-linux-android-
+REAL_CC=toolchain/llvm-arm-toolchain-ship/8.0/bin/clang
+DEFCONFIG=d2q_hybris_defconfig
+EXTRA_CMDS=''
+POST_DEFCONFIG_CMDS="check_defconfig"
+DTC_EXT=tools/dtc
+CONFIG_BUILD_ARM64_DT_OVERLAY=y
+FILES="
+arch/arm64/boot/Image-dtb
+"
